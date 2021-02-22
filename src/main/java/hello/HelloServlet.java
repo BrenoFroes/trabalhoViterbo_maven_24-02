@@ -103,7 +103,7 @@ public class HelloServlet extends HttpServlet {
         if(nome==null)
             nome = "Fulano";
         
-        msg = msg+nome+msg2+"?";
+        msg = msg+nome+msg2+" "+"?";
 
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -148,27 +148,27 @@ public class HelloServlet extends HttpServlet {
         switch(lang){
             case "pt":
                 msg = "Oi, ";
-                msg2 = "como vai";
+                msg2 = " como vai";
                 break;
             case "en":
                 msg = "Hi, ";
-                msg2 = "how are you";
+                msg2 = " how are you";
                 break;
             case "de":
                 msg = "Hallo, ";
-                msg2 = "wie gehts";
+                msg2 = " wie gehts";
                 break;
             case "fr":
                 msg = "Salut, ";
-                msg2 = "comment allez vous";
+                msg2 = " comment allez vous";
                 break;
             case "es":
                 msg = "Hola, ";
-                msg2 = "como esta";
+                msg2 = " como esta";
                 break;
             case "ru":
                 msg = "Здравствуй, ";
-                msg2 = "Как дела";
+                msg2 = " Как дела";
                 break;
         }
         
@@ -177,7 +177,7 @@ public class HelloServlet extends HttpServlet {
         if(nome==null)
             nome = "Fulano";
         
-        msg = msg+nome+msg2+"?";
+        msg = msg+nome+" "+msg2+"?";
 
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
