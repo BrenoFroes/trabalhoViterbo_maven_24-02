@@ -7,6 +7,8 @@ package hello;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -59,20 +61,40 @@ public class HelloServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        Date data = new Date(System.currentTimeMillis()); 
+        SimpleDateFormat formatarDate = new SimpleDateFormat("dd-MM-yyyy"); 
+        
+        
         String msg = "";
+        String msg2 = ""; 
         
         String lang = request.getParameter("lang");
         if(lang==null)
             lang = "pt";
         switch(lang){
             case "pt":
-                msg = "Alô, ";
+                msg = "Oi, ";
+                msg2 = " como vai";
                 break;
             case "en":
-                msg = "Hello, ";
+                msg = "Hi, ";
+                msg2 = " how are you";
+                break;
+            case "de":
+                msg = "Hallo, ";
+                msg2 = " wie gehts";
                 break;
             case "fr":
-                msg = "Bonjour, ";
+                msg = "Salut, ";
+                msg2 = " comment allez vous";
+                break;
+            case "es":
+                msg = "Hola, ";
+                msg2 = " como esta";
+                break;
+            case "ru":
+                msg = "Здравствуй, ";
+                msg2 = " Как дела";
                 break;
         }
         
@@ -81,7 +103,7 @@ public class HelloServlet extends HttpServlet {
         if(nome==null)
             nome = "Fulano";
         
-        msg = msg+nome+"!";
+        msg = msg+nome+msg2+"?";
 
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -89,13 +111,16 @@ public class HelloServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet HelloServlet</title>");            
+            out.println("<title>HelloServlet de Breno Fróes</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet HelloServlet</h1>");
+            out.println("<h3>Data: "+formatarDate.format(data)+"</h3>");
+            out.println("<h1>HelloServlet de Breno Fróes</h1>");
             out.println("<p>" + msg + "</p>");
+            out.println("<a href=\".\"><b><<<</b> Voltar</a>");
             out.println("</body>");
             out.println("</html>");
+            
         }
     }
 
@@ -110,23 +135,40 @@ public class HelloServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        Date data = new Date(System.currentTimeMillis()); 
+        SimpleDateFormat formatarDate = new SimpleDateFormat("dd-MM-yyyy"); 
+        
         String msg = "";
+        String msg2 = "";
         
         String lang = request.getParameter("lang");
         if(lang==null)
             lang = "pt";
         switch(lang){
             case "pt":
-                msg = "Alô, ";
+                msg = "Oi, ";
+                msg2 = "como vai";
                 break;
             case "en":
-                msg = "Hello, ";
-                break;
-            case "fr":
-                msg = "Bonjour, ";
+                msg = "Hi, ";
+                msg2 = "how are you";
                 break;
             case "de":
                 msg = "Hallo, ";
+                msg2 = "wie gehts";
+                break;
+            case "fr":
+                msg = "Salut, ";
+                msg2 = "comment allez vous";
+                break;
+            case "es":
+                msg = "Hola, ";
+                msg2 = "como esta";
+                break;
+            case "ru":
+                msg = "Здравствуй, ";
+                msg2 = "Как дела";
                 break;
         }
         
@@ -135,7 +177,7 @@ public class HelloServlet extends HttpServlet {
         if(nome==null)
             nome = "Fulano";
         
-        msg = msg+nome+"!";
+        msg = msg+nome+msg2+"?";
 
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -146,6 +188,7 @@ public class HelloServlet extends HttpServlet {
             out.println("<title>Servlet HelloServlet</title>");            
             out.println("</head>");
             out.println("<body>");
+            out.println("<h3>Data: "+formatarDate.format(data)+"</h3>");
             out.println("<h1>Servlet HelloServlet</h1>");
             out.println("<p>" + msg + "</p>");
             out.println("</body>");

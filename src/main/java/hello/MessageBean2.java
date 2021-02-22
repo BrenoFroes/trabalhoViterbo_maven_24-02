@@ -14,11 +14,11 @@ import java.io.Serializable;
  *
  * @author viter
  */
-public class MessageBean implements Serializable {
+public class MessageBean2 implements Serializable {
      
     private String msg;
         
-    public MessageBean() {
+    public MessageBean2() {
     }
     
     public String getMsg() {
@@ -29,22 +29,22 @@ public class MessageBean implements Serializable {
         switch (value){
             case "":
             case "pt":
-                msg = "Oi";
+                msg = " como vai";
                 break;
             case "en":
-                msg = "Hi";
+                msg = " how are you";
                 break;
             case "de":
-                msg = "Hallo";
+                msg = " wie gehts";
                 break;
             case "fr":
-                msg = "Salut";
+                msg = " comment allez vous";
                 break;
             case "es":
-                msg = "Hola";
+                msg = " como esta";
                 break;
             case "ru":
-                msg = "Здравствуй";
+                msg = " Как дела";
                 break;
         }
     }
